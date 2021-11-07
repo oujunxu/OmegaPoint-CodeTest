@@ -23,7 +23,6 @@ namespace OmegaPointSimpleAPI.Data.DataAccess
         }
 
 
-
         /**
          * Used as save function (insert to database).
          * @param sql queries for update of data stored inside the db.
@@ -37,18 +36,5 @@ namespace OmegaPointSimpleAPI.Data.DataAccess
             }
         }
 
-        /**
-         * Used as a update function.
-         * @param sql queries for update of data stored inside the db.
-         * @param data, also called the model in this case.
-         */
-        public static List<T> UpdateData<T>(string sql, T data, string connectionString)
-        {
-            using (IDbConnection cnn = new SqlConnection(connectionString))
-            {
-
-                return cnn.Query<T>(sql, data).ToList();
-            }
-        }
     }
 }
