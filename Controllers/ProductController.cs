@@ -86,10 +86,17 @@ namespace OmegaPointSimpleAPI.Controllers
         }
 
         [HttpDelete]
-        public JsonResult Delete(DeleteModel pm)
+        public JsonResult Delete(ProductModel pm)
         {
             DataProcessor.DeleteProduct<SingleProduct>(pm.Id, GetConnectionString());
             return new JsonResult("Successfully deleted!");
+        }
+
+        [Route("GetProduct")]
+        public JsonResult GetProduct(ProductModel pm)
+        {
+            List<SingleProduct> result = DataProcessor.GetProduct<SingleProduct>(pm.Id, GetConnectionString());
+            return new JsonResult(result);
         }
     }
 }

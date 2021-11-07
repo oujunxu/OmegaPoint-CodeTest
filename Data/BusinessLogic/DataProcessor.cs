@@ -52,6 +52,15 @@ namespace OmegaPointSimpleAPI.Data.BusinessLogic
             return SqlDataAccess.LoadData<T>(sql, connectionString);
         }
 
+        //get item based on its id
+        public static List<T> GetProduct<T>(int id, string connectionString)
+        {
+            string sql = @"select * from dbo.SingleProductTable Where id="+id;
+
+            return SqlDataAccess.LoadData<T>(sql, connectionString);
+        }
+
+
         // delete rows in SqlServer based on its Id
         public static List<T> DeleteProduct<T>(int id, string connectionString)
         {
