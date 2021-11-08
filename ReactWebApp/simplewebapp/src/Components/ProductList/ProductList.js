@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 import Product from './../Product/Product';
 
 export default class ProductList extends Component {
@@ -9,11 +9,12 @@ export default class ProductList extends Component {
   }
 
   refreshList() {
-    fetch("http://localhost:5000/api/product/GetOverviewProduct")
+    fetch("http://localhost:5000/api/product/")
       .then((response) => response.json())
       .then((data) => {
         this.setState({ products: data });
       });
+
   }
 
   componentDidMount() {
@@ -24,6 +25,7 @@ export default class ProductList extends Component {
     this.refreshList();
   }
 
+
   render() {
     const { products } = this.state;
     return (
@@ -33,7 +35,7 @@ export default class ProductList extends Component {
             <tbody key={product.Title}>
               <tr className="product-list-table-row">
                 <td className="product-list-images">
-                  <a><img className="product-img" src={product.Image}></img></a>
+                  <Link to={'/Product'}><img className="product-img"  src={product.Image}/></Link>
                 </td>
                 <td>
                     <div className="product-list-text-wrap">

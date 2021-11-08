@@ -85,3 +85,11 @@ a.navbar-brand {
         font-weight: 600;
     }
 
+.product-wrapper table{
+    margin:auto;
+    align-items: center;
+}
+
+.product-wrapper{
+    padding-top: 15%;
+}

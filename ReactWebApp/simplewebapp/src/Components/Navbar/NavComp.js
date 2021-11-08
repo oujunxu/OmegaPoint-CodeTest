@@ -1,5 +1,5 @@
 import React, {Component} from "react";
-import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Container} from 'react-bootstrap';
+import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, useLocation} from 'react-bootstrap';
 import './NavComp.css';
 import "../../Resources/Css/site.css";
 import ProductList from '../ProductList/ProductList';
@@ -12,6 +12,7 @@ import {
     Link,
     Redirect
   } from "react-router-dom";
+import Product from "../Product/Product";
   
 
 export default class NavComp extends Component{
@@ -58,6 +59,9 @@ export default class NavComp extends Component{
                 </Route>
                 <Route path="/Home">
                   <Home />
+                </Route>
+                <Route path="/Product">
+                  <Product ProductId={20}/>
                 </Route>
               </Switch>
             </div>

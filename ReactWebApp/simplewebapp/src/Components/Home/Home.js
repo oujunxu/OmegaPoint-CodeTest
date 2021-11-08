@@ -1,4 +1,6 @@
 import React,{Component} from 'react';
+import Product from '../Product/Product';
+
 
 export default class Home extends Component {
     render() {
@@ -17,6 +19,7 @@ export default class Home extends Component {
                 Nunc ut tellus fringilla, viverra nisl ac, imperdiet ex. In imperdiet tristique iaculis. Nam rutrum massa quis faucibus faucibus. Sed venenatis non ex nec fringilla. Praesent varius, ligula vel dictum fermentum, mauris augue tempor odio, eget eleifend enim neque non augue. Aenean at nisi sit amet mauris venenatis suscipit nec eget erat. Aenean ullamcorper iaculis dolor ut pellentesque. In hac habitasse platea dictumst. Vestibulum a massa in nisl gravida ultricies id sed eros. Integer sagittis aliquam diam, vel luctus leo placerat sit amet. Fusce non ultrices dolor. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos.
                 </p>
             </div>
+
         );
     }
 } 
