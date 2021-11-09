@@ -1,42 +1,26 @@
-import React, {Component} from "react";
-import {Link} from 'react-router-dom';
+import React, {useEffect, useState} from "react";
+import useFetch from 'react-fetch-hook';
+import {useLocation, useParams} from 'react-router-dom';
 
-export default class Product extends Component {
-
-    constructor(props) {
-        super(props);
-        this.state = { product: [] };
-
-      }
+function Product(){
+        let location = useLocation();
+        let {productID} = location.state;
     
-      refreshList() {
-        fetch("http://localhost:5000/api/product/"+this.props.ProductId)
-          .then((response) => response.json())
-          .then((data) => {
-            this.setState({ product: data });
-          });
-      }
-    
-      componentDidMount() {
-        this.refreshList();
-      }
-    
-      componentDidUpdate() {
-        this.refreshList();
-      }
+        const{ isLoading, error, data } = useFetch("http://localhost:5000/api/product/"+ parseInt(productID));
+        
+        if(isLoading) return "Loading..";
 
-    render(){
-        const {product} = this.state;
+        if (error) return "Error!";
+
+    
         return (
-          <div className="product-wrapper">
+          <div className="product-wrapper text-white fixed-background"  style={{backgroundImage: 'url("https://virtuoart.com/public/uploads/preview/abbca3e3a8329cd0ea6515d12f807a1c-61861588150306juuydyjldi.jpg")'}}>
               <table>
-                {product.map(sPro =>
-                <tbody key={product.Title}>
+                {data.map(sPro =>
+                <tbody key={sPro.Title}>
                   <tr className="product-list-table-row">
                     <td className="product-list-images">
-                      <Link to={"/product/" + sPro.id}>
                         <img className="product-img" src={sPro.Image} />
-                      </Link>
                     </td>
                     <td>
                       <div className="product-list-text-wrap">
@@ -65,8 +49,8 @@ export default class Product extends Component {
                 </tbody>
                 )}
               </table>
-           
           </div>
         );
-    }
 }
+
+export default Product;

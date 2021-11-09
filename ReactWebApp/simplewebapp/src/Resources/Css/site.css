@@ -65,7 +65,7 @@ a.navbar-brand {
 .product-list-table-row {
     background-color: rgb(0 0 0 / 40%);
     vertical-align: top;
-    height: 337px;
+    height: 265px;
 }
 
 .product-list-images {
@@ -88,8 +88,22 @@ a.navbar-brand {
 .product-wrapper table{
     margin:auto;
     align-items: center;
+    width: 50%;
 }
 
 .product-wrapper{
     padding-top: 15%;
+    height: 100vh;
+}
+
+.list-wrapper{
+    padding-top: 8%;
+
+}
+
+.fixed-background{
+    background-repeat: none;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }

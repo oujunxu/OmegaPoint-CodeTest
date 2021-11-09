@@ -1,6 +1,5 @@
 import React, {Component} from "react";
 import {Navbar, Nav, NavDropdown, Form, FormControl, Button, Container, useLocation} from 'react-bootstrap';
-import './NavComp.css';
 import "../../Resources/Css/site.css";
 import ProductList from '../ProductList/ProductList';
 import Home from '../Home/Home';
@@ -61,7 +60,7 @@ export default class NavComp extends Component{
                   <Home />
                 </Route>
                 <Route path="/Product">
-                  <Product ProductId={20}/>
+                  <Product />
                 </Route>
               </Switch>
             </div>
