@@ -1,0 +1,11 @@
+CREATE TABLE [dbo].[SingleProductTable] (
+    [Id]          INT            NOT NULL,
+    [Title]       NVARCHAR (MAX) NOT NULL,
+    [Price]       DECIMAL (6, 2) NOT NULL,
+    [Description] NVARCHAR (MAX) NOT NULL,
+    [Category]    NVARCHAR (MAX) NOT NULL,
+    [Image]       NVARCHAR (MAX) NOT NULL,
+    [Rate]        DECIMAL (6, 2) NOT NULL,
+    [Count]       INT            NOT NULL,
+    CONSTRAINT [PK_SingleProductTable] PRIMARY KEY CLUSTERED ([Id] ASC)
+);
