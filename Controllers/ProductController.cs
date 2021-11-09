@@ -13,6 +13,11 @@ using Microsoft.Extensions.Configuration;
 
 namespace OmegaPointSimpleAPI.Controllers
 {
+    /**
+     * Controller class which controlls the flow of data, by getting them from database and pass it on as JSON data.
+     * Class by Oujun Anders Xu
+     */
+
     [Route("api/[controller]")]
     [ApiController]
     public class ProductController : ControllerBase
@@ -92,11 +97,19 @@ namespace OmegaPointSimpleAPI.Controllers
             return new JsonResult("Successfully deleted!");
         }
 
-        [Route("GetProduct")]
-        public JsonResult GetProduct(ProductModel pm)
+        [HttpGet("{id:int?}")]
+        public JsonResult GetProduct(int id)
         {
-            List<SingleProduct> result = DataProcessor.GetProduct<SingleProduct>(pm.Id, GetConnectionString());
+            List<SingleProduct> result = DataProcessor.GetProduct<SingleProduct>(id, GetConnectionString());
             return new JsonResult(result);
         }
+
+        [Route("search")]
+        public JsonResult GetSingleProduct(SingleProduct sp)
+        {
+            List<SingleProduct> result = DataProcessor.GetProduct<SingleProduct>(sp.Id, GetConnectionString());
+            return new JsonResult(result);
+        }
+
     }
 }

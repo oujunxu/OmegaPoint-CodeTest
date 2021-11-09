@@ -7,6 +7,10 @@ using System.Threading.Tasks;
 
 namespace OmegaPointSimpleAPI.Data.BusinessLogic
 {
+    /**
+     * A sql data processor, that sends sql queries to sqlDataAccess.
+     * Class by Oujun Anders Xu
+     */
     public class DataProcessor
     {
         // adds products to the database only if the new data doesn't exist.
@@ -40,14 +44,6 @@ namespace OmegaPointSimpleAPI.Data.BusinessLogic
         public static List<T> GetAllProducts<T>(string connectionString)
         {
             string sql = @"select * from dbo.SingleProductTable;";
-
-            return SqlDataAccess.LoadData<T>(sql, connectionString);
-        }
-
-        // gets list of data with limited of information
-        public static List<T> GetOverviewProducts<T>(string connectionString)
-        {
-            string sql = @"select Title, Price, Image from dbo.SingleProductTable;";
 
             return SqlDataAccess.LoadData<T>(sql, connectionString);
         }

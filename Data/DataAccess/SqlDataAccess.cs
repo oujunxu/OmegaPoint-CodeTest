@@ -8,6 +8,10 @@ using System.Data;
 
 namespace OmegaPointSimpleAPI.Data.DataAccess
 {
+    /**
+     * Class with methods that allows us to access the database with the connectionstring and sql-queries to get the right data but also insert data.
+     * 
+     */
     public class SqlDataAccess
     {
         /**
