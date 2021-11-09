@@ -5,3 +5,9 @@ Simple full-stack application
 3. Download React application.
 4. Start the API through VisualStudio.
 5. Start the React Web App in Visual Code through Console/Terminal by enter: "npm start".
+
+
+Other Info:
+Starting up in: http://localhost:5000 and can be accessed through http://localhost:5000/api/product after the program has been started.
+
+
