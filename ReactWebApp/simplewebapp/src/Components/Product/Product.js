@@ -28,7 +28,7 @@ function Product(){
                           <span>Title:</span> <br /> {sPro.Title}
                         </div>
                         <div>
-                          <span>Price:</span> <br /> {sPro.Price}
+                          <span>Price:</span> <br /> ${sPro.Price}
                         </div>
                         <div>
                           <span>Description:</span> <br /> {sPro.Description}

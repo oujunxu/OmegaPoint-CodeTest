@@ -45,7 +45,7 @@ export default class ProductList extends Component {
                       <br />
                       <span>Price:</span>
                       <br/>
-                      {product.Price}
+                      ${product.Price} 
                     </div>
                 </td>
               </tr>
