@@ -90,6 +90,23 @@ namespace OmegaPointSimpleAPI.Controllers
             return new JsonResult("Successfully added!");
         }
 
+        [HttpPut]
+        public JsonResult Update(SingleProduct sp) 
+        {
+            DataProcessor.UpdateProduct(
+                    sp.Id,
+                    sp.Title,
+                    sp.Price,
+                    sp.Description,
+                    sp.Category,
+                    sp.Image,
+                    sp.Rate,
+                    sp.Count,
+                    GetConnectionString()
+            );
+            return new JsonResult("Successfully updated");
+        }
+
         [HttpDelete]
         public JsonResult Delete(ProductModel pm)
         {

@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Dapper;
 using System.Data.SqlClient;
 using System.Data;
+using OmegaPointSimpleAPI.Data.Model;
 
 namespace OmegaPointSimpleAPI.Data.DataAccess
 {
@@ -26,6 +27,13 @@ namespace OmegaPointSimpleAPI.Data.DataAccess
             }
         }
 
+        public static void UpdateData(string sql, SingleProduct data, string connectionString)
+        {
+            using (IDbConnection cnn = new SqlConnection(connectionString))
+            {
+                cnn.Query(sql, data);
+            }
+        }
 
         /**
          * Used as save function (insert to database).
