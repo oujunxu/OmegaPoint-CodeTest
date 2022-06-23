@@ -23,6 +23,7 @@ export default class NavComp extends Component{
                 <Container>
                   <Navbar.Toggle aria-controls="basic-navbar-nav" />
                   <Navbar.Collapse id="basic-navbar-nav">
+                    <a href="../Home"><img src="Resources/Images/storeStore.png" width="150px" height="80px"/></a>
                     <Nav className="me-auto">
                       <Nav.Link
                         as={Link}

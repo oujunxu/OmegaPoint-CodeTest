@@ -68,7 +68,7 @@ namespace OmegaPointSimpleAPI.Controllers
         [HttpGet]
         public JsonResult Get()
         {
-            InsertData();
+            //InsertData();
             List<SingleProduct> cList = DataProcessor.GetAllProducts<SingleProduct>(GetConnectionString());
             return new JsonResult(cList.ToArray());
         }

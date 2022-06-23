@@ -4,9 +4,9 @@ import Product from '../Product/Product';
 
 export default function Home () {
         return(
-            <div className="list-wrapper fixed-background" style={{backgroundImage: 'url("https://virtuoart.com/public/uploads/preview/abbca3e3a8329cd0ea6515d12f807a1c-61861588150306juuydyjldi.jpg")'}}>
+            <div className="list-wrapper fixed-background">
                 <div className="home-wrapper" >
-                    <h1>Lorem Ipsum</h1>
+                    <h1 class="text-white">Lorem Ipsum</h1>
                     <p className="welcome-text text-white">
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum id ligula sed mi volutpat laoreet quis id erat. Sed ligula orci, pharetra non facilisis in, finibus ut ante. Nullam ullamcorper ante odio, sit amet fermentum nunc pharetra ac. Interdum et malesuada fames ac ante ipsum primis in faucibus. Nullam et felis ultricies, condimentum ipsum sed, facilisis justo. Suspendisse ut tellus ac enim laoreet dapibus ut sed nunc. Nam id felis condimentum, varius leo eget, varius risus. Etiam nisi mi, tempus nec molestie at, auctor vel dolor.
 
