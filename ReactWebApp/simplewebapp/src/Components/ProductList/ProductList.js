@@ -9,8 +9,8 @@ export default class ProductList extends Component {
   }
 
   refreshList() {
-    fetch("http://localhost:5000/api/product/")
-      .then((response) => response.json())
+    fetch("http://localhost:5000/api/product")
+      .then(response => response.json())
       .then((data) => {
         this.setState({ products: data });
       });
@@ -29,7 +29,7 @@ export default class ProductList extends Component {
   render() {
     const { products } = this.state;
     return (
-      <div className="list-wrapper fixed-background" style={{backgroundImage: 'url("https://virtuoart.com/public/uploads/preview/abbca3e3a8329cd0ea6515d12f807a1c-61861588150306juuydyjldi.jpg")'}}>
+      <div className="list-wrapper fixed-background">
         <table className="product-list-table">
           {products.map((product) => (
             <tbody key={product.Title}>
