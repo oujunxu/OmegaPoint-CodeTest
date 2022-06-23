@@ -65,6 +65,32 @@ namespace OmegaPointSimpleAPI.Data.BusinessLogic
             return SqlDataAccess.LoadData<T>(sql, connectionString);
         }
 
+        public static void UpdateProduct(int id, string title, float price, string description, string category, string image, float rate, int count, string connectionString)
+        {
+            /*
+            string sql = "Update table dbo.SingleProductTable" +
+                          $" set Title = {title}, Price = {price}, Description = '{description}', Category = {category}, Image = {image}, Rate = {rate}, Count = {count}" +
+                          $" where Id = {id};";
+            */
+
+            SingleProduct data = new SingleProduct()
+            {
+                Id = id,
+                Title = title,
+                Price = price,
+                Description = description,
+                Category = category,
+                Image = image,
+                Rate = rate,
+                Count = count
+
+            };
+
+            string sql = @"Update dbo.SingleProductTable Set Title = @Title, Price = @Price, Description = @Description, Category = @Category, Image = @Image, Rate = @Rate, Count = @Count Where Id = @Id;";
+
+            SqlDataAccess.UpdateData(sql, data, connectionString);
+        }
+
 
     }
 }
