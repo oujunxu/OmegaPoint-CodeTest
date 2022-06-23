@@ -14,7 +14,7 @@ function Product(){
 
     
         return (
-          <div className="product-wrapper text-white fixed-background"  style={{backgroundImage: 'url("https://virtuoart.com/public/uploads/preview/abbca3e3a8329cd0ea6515d12f807a1c-61861588150306juuydyjldi.jpg")'}}>
+          <div className="product-wrapper text-white fixed-background">
               <table>
                 {data.map(sPro =>
                 <tbody key={sPro.Title}>
