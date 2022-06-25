@@ -13,9 +13,18 @@ namespace OmegaPointSimpleAPI.Data.BusinessLogic
      */
     public class DataProcessor
     {
+
+        private string connectionString;
+
+        public DataProcessor(string connectionString)
+        {
+            this.connectionString = connectionString;
+        }
+
+
         // adds products to the database only if the new data doesn't exist.
-        public static int AddProducts(int id, string title, float price, string description,
-          string category, string image, float rate, int count, string connectionString)
+        public int AddProducts(int id, string title, float price, string description,
+          string category, string image, float rate, int count)
         {
             SingleProduct data = new SingleProduct()
             {
@@ -36,36 +45,36 @@ namespace OmegaPointSimpleAPI.Data.BusinessLogic
                            values (@Id, @Title, @Price, @Description, @Category, @Image, @Rate, @Count)
                            end;";
 
-            return SqlDataAccess.SaveData(sql, data, connectionString);
+            return SqlDataAccess.SaveData(sql, data, this.connectionString);
 
         }
 
         // get all data with all the available information.
-        public static List<T> GetAllProducts<T>(string connectionString)
+        public List<T> GetAllProducts<T>()
         {
             string sql = @"select * from dbo.SingleProductTable;";
 
-            return SqlDataAccess.LoadData<T>(sql, connectionString);
+            return SqlDataAccess.LoadData<T>(sql, this.connectionString);
         }
 
         //get item based on its id
-        public static List<T> GetProduct<T>(int id, string connectionString)
+        public List<T> GetProduct<T>(int id)
         {
             string sql = @"select * from dbo.SingleProductTable Where id="+id;
 
-            return SqlDataAccess.LoadData<T>(sql, connectionString);
+            return SqlDataAccess.LoadData<T>(sql, this.connectionString);
         }
 
 
         // delete rows in SqlServer based on its Id
-        public static List<T> DeleteProduct<T>(int id, string connectionString)
+        public List<T> DeleteProduct<T>(int id)
         {
             string sql = @"Delete from dbo.SingleProductTable Where Id =" + id;
 
-            return SqlDataAccess.LoadData<T>(sql, connectionString);
+            return SqlDataAccess.LoadData<T>(sql, this.connectionString);
         }
 
-        public static void UpdateProduct(int id, string title, float price, string description, string category, string image, float rate, int count, string connectionString)
+        public void UpdateProduct(int id, string title, float price, string description, string category, string image, float rate, int count)
         {
             /*
             string sql = "Update table dbo.SingleProductTable" +
@@ -88,7 +97,7 @@ namespace OmegaPointSimpleAPI.Data.BusinessLogic
 
             string sql = @"Update dbo.SingleProductTable Set Title = @Title, Price = @Price, Description = @Description, Category = @Category, Image = @Image, Rate = @Rate, Count = @Count Where Id = @Id;";
 
-            SqlDataAccess.UpdateData(sql, data, connectionString);
+            SqlDataAccess.UpdateData(sql, data, this.connectionString);
         }
 
 

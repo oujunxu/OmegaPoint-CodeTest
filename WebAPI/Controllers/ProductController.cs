@@ -23,17 +23,11 @@ namespace OmegaPointSimpleAPI.Controllers
     public class ProductController : ControllerBase
     {
 
-        private readonly IConfiguration _configuration;
+        private DataProcessor _dataProcessor;
 
-        public ProductController(IConfiguration configuration)
+        public ProductController(DataProcessor dataprocessor)
         {
-            _configuration = configuration;
-        }
-
-        public string GetConnectionString()
-        {
-            string sqlDataSource = _configuration.GetConnectionString("ProductDB");
-            return sqlDataSource;
+            _dataProcessor = dataprocessor;
         }
 
 
@@ -51,7 +45,7 @@ namespace OmegaPointSimpleAPI.Controllers
             List<ProductModel> products = NewData();
             foreach(var product in products)
             {
-                DataProcessor.AddProducts(
+                _dataProcessor.AddProducts(
                     product.Id,
                     product.Title,
                     product.Price,
@@ -59,8 +53,7 @@ namespace OmegaPointSimpleAPI.Controllers
                     product.Category,
                     product.Image,
                     product.Rating.Rate,
-                    product.Rating.Count,
-                    GetConnectionString()
+                    product.Rating.Count
                 ) ;   
             }       
         }
@@ -69,14 +62,14 @@ namespace OmegaPointSimpleAPI.Controllers
         public JsonResult Get()
         {
             //InsertData();
-            List<SingleProduct> cList = DataProcessor.GetAllProducts<SingleProduct>(GetConnectionString());
+            List<SingleProduct> cList = _dataProcessor.GetAllProducts<SingleProduct>();
             return new JsonResult(cList.ToArray());
         }
 
         [HttpPost]
         public JsonResult Post(SingleProduct sp)
         {
-            DataProcessor.AddProducts(
+            _dataProcessor.AddProducts(
                     sp.Id,
                     sp.Title,
                     sp.Price,
@@ -84,8 +77,7 @@ namespace OmegaPointSimpleAPI.Controllers
                     sp.Category,
                     sp.Image,
                     sp.Rate,
-                    sp.Count,
-                    GetConnectionString()
+                    sp.Count
                 );
             return new JsonResult("Successfully added!");
         }
@@ -93,7 +85,7 @@ namespace OmegaPointSimpleAPI.Controllers
         [HttpPut]
         public JsonResult Update(SingleProduct sp) 
         {
-            DataProcessor.UpdateProduct(
+            _dataProcessor.UpdateProduct(
                     sp.Id,
                     sp.Title,
                     sp.Price,
@@ -101,30 +93,30 @@ namespace OmegaPointSimpleAPI.Controllers
                     sp.Category,
                     sp.Image,
                     sp.Rate,
-                    sp.Count,
-                    GetConnectionString()
+                    sp.Count
             );
             return new JsonResult("Successfully updated");
         }
 
         [HttpDelete]
-        public JsonResult Delete(ProductModel pm)
+        [Route("delete")]
+        public JsonResult Delete(SingleProduct sp)
         {
-            DataProcessor.DeleteProduct<SingleProduct>(pm.Id, GetConnectionString());
+            _dataProcessor.DeleteProduct<SingleProduct>(sp.Id);
             return new JsonResult("Successfully deleted!");
         }
 
         [HttpGet("{id:int?}")]
         public JsonResult GetProduct(int id)
         {
-            List<SingleProduct> result = DataProcessor.GetProduct<SingleProduct>(id, GetConnectionString());
+            List<SingleProduct> result = _dataProcessor.GetProduct<SingleProduct>(id);
             return new JsonResult(result);
         }
 
         [Route("search")]
         public JsonResult GetSingleProduct(SingleProduct sp)
         {
-            List<SingleProduct> result = DataProcessor.GetProduct<SingleProduct>(sp.Id, GetConnectionString());
+            List<SingleProduct> result = _dataProcessor.GetProduct<SingleProduct>(sp.Id);
             return new JsonResult(result);
         }
 
