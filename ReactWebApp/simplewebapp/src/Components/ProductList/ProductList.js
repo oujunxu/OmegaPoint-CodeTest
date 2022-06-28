@@ -35,17 +35,17 @@ export default class ProductList extends Component {
             <tbody key={product.Title}>
               <tr className="product-list-table-row">
                 <td className="product-list-images">
-                  <Link to={{pathname:"/Product", state: {productID: product.Id}}}><img className="product-img"  src={product.Image}/></Link>
+                  <Link to={{pathname:"/Product", state: {productID: product.id}}}><img className="product-img"  src={product.image}/></Link>
                 </td>
                 <td>
                     <div className="product-list-text-wrap text-white">
                       <span>Title:</span>
                       <br/>
-                      {product.Title}
+                      {product.title}
                       <br />
                       <span>Price:</span>
                       <br/>
-                      ${product.Price} 
+                      ${product.price} 
                     </div>
                 </td>
               </tr>
