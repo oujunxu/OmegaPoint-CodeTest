@@ -11,36 +11,35 @@ function Product(){
         if(isLoading) return "Loading..";
 
         if (error) return "Error!";
-
     
         return (
           <div className="product-wrapper text-white fixed-background">
               <table>
-                {data.map(sPro =>
-                <tbody key={sPro.Title}>
+                {data.map((sPro)=>
+                <tbody key={sPro.title}>
                   <tr className="product-list-table-row">
                     <td className="product-list-images">
-                        <img className="product-img" src={sPro.Image} />
+                        <img className="product-img" src={sPro.image} />
                     </td>
                     <td>
                       <div className="product-list-text-wrap">
                         <div>
-                          <span>Title:</span> <br /> {sPro.Title}
+                          <span>Title:</span> <br /> {sPro.title}
                         </div>
                         <div>
-                          <span>Price:</span> <br /> ${sPro.Price}
+                          <span>Price:</span> <br /> ${sPro.price}
                         </div>
                         <div>
-                          <span>Description:</span> <br /> {sPro.Description}
+                          <span>Description:</span> <br /> {sPro.description}
                         </div>
                         <div>
-                          <span>Category:</span> <br /> {sPro.Category}
+                          <span>Category:</span> <br /> {sPro.category}
                         </div>
                         <div>
-                          <span>Rate:</span> <br /> {sPro.Rate}
+                          <span>Rate:</span> <br /> {sPro.rate}
                         </div>
                         <div>
-                          <span>Count:</span> <br /> {sPro.Count}
+                          <span>Count:</span> <br /> {sPro.count}
                         </div>
                       </div>
                     </td>
