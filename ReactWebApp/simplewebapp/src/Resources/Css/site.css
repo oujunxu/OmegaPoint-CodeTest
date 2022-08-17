@@ -28,7 +28,6 @@ a.navbar-brand {
 .home-wrapper {
     max-width: 50%;
     margin: auto;
-    padding-top: 5%;
     
 }
 
@@ -92,8 +91,9 @@ a.navbar-brand {
 }
 
 .product-wrapper{
-    padding-top: 15%;
+    padding-top: 10%;
     height: 100vh;
+    display: inline-table;
 }
 
 .list-wrapper{
