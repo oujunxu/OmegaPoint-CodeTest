@@ -2,9 +2,9 @@ import React, {useEffect, useState} from "react";
 import useFetch from 'react-fetch-hook';
 import {useLocation, useParams} from 'react-router-dom';
 
-function Product(){
+function Product(props){
         let location = useLocation();
-        let {productID} = location.state;
+        let productID = props.match.params.id;
     
         const{ isLoading, error, data } = useFetch("http://localhost:5000/api/product/"+ parseInt(productID));
         
