@@ -7,6 +7,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json.Serialization;
+using OmegaPointSimpleAPI.Data.BusinessLogic;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -35,14 +36,7 @@ namespace OmegaPointSimpleAPI
                  .AllowAnyHeader());
             });
 
-            //JSON Serialization
-            services.AddControllersWithViews()
-                .AddNewtonsoftJson(options =>
-                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft
-                .Json.ReferenceLoopHandling.Ignore)
-                .AddNewtonsoftJson(options => options.SerializerSettings.ContractResolver
-                = new DefaultContractResolver());
-
+            services.AddScoped<DataProcessor>(x => new DataProcessor(Configuration.GetConnectionString("ProductDB")));
             services.AddControllers();
         }
 
