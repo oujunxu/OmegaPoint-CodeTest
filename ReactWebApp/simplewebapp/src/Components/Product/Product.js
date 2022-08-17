@@ -15,38 +15,36 @@ function Product(props){
         return (
           <div className="product-wrapper text-white fixed-background">
               <table>
-                {data.map((sPro)=>
-                <tbody key={sPro.title}>
+                <tbody key={data.title}>
                   <tr className="product-list-table-row">
                     <td className="product-list-images">
-                        <img className="product-img" src={sPro.image} />
+                        <img className="product-img" src={data.image} />
                     </td>
                     <td>
                       <div className="product-list-text-wrap">
                         <div>
-                          <span>Title:</span> <br /> {sPro.title}
+                          <span>Title:</span> <br /> {data.title}
                         </div>
                         <div>
-                          <span>Price:</span> <br /> ${sPro.price}
+                          <span>Price:</span> <br /> ${data.price}
                         </div>
                         <div>
-                          <span>Description:</span> <br /> {sPro.description}
+                          <span>Description:</span> <br /> {data.description}
                         </div>
                         <div>
-                          <span>Category:</span> <br /> {sPro.category}
+                          <span>Category:</span> <br /> {data.category}
                         </div>
                         <div>
-                          <span>Rate:</span> <br /> {sPro.rate}
+                          <span>Rate:</span> <br /> {data.rating.rate}
                         </div>
                         <div>
-                          <span>Count:</span> <br /> {sPro.count}
+                          <span>Count:</span> <br /> {data.rating.count}
                         </div>
                       </div>
                     </td>
                   </tr>
                   <br />
                 </tbody>
-                )}
               </table>
           </div>
         );
