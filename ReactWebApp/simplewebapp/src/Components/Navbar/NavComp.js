@@ -60,8 +60,7 @@ export default class NavComp extends Component{
                 <Route path="/Home">
                   <Home />
                 </Route>
-                <Route path="/Product">
-                  <Product />
+                <Route render={(props)=><Product {...props}/>} path="/Product/:id">
                 </Route>
               </Switch>
             </div>
